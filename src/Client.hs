@@ -46,16 +46,16 @@ options = Options
               <> value "")
       <*> strOption
             ( long "host"
-            <> short 'h'
-            <> metavar "HOST"
-            <> help "RPC host"
-            <> value "127.0.0.1")
+              <> short 'h'
+              <> metavar "HOST"
+              <> help "RPC host"
+              <> value "127.0.0.1")
       <*> option auto 
             ( long "port"
-            <> short 't'
-            <> metavar "PORT"
-            <> help "RPC port"
-            <> value 18332)
+              <> short 't'
+              <> metavar "PORT"
+              <> help "RPC port"
+              <> value 18332)
       )
 
 -----------------------------------------------------------------------------
