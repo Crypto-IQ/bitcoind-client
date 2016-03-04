@@ -30,7 +30,9 @@ type Host = String
 type Port = Int
 
 data BitcoindRequest =
-    GetBlockCount
+    GetBestBlockHash
+  | GetBlockchainInfo
+  | GetBlockCount
   | GetBlockHash Int
   | GetInfo
     deriving (Read,Show)
@@ -66,9 +68,11 @@ bitcoindRequest method params = object
 
 instance ToJSON BitcoindRequest where
   toJSON r = case r of
-    GetBlockCount  -> bitcoindRequest "getblockcount" []
-    GetBlockHash i -> bitcoindRequest "getblockhash" [toJSON i]
-    GetInfo        -> bitcoindRequest "getinfo" []
+    GetBestBlockHash  -> bitcoindRequest "getblockcount" []
+    GetBlockchainInfo -> bitcoindRequest "getblockchaininfo" []
+    GetBlockCount     -> bitcoindRequest "getblockcount" []
+    GetBlockHash i    -> bitcoindRequest "getblockhash" [toJSON i]
+    GetInfo           -> bitcoindRequest "getinfo" []
 
 -----------------------------------------------------------------------------
 
