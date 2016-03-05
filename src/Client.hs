@@ -21,9 +21,15 @@ getBlockHashP = GetBlockHash <$> (argument auto (metavar "BLOCKDEPTH"))
 options :: Parser Options
 options = Options
   <$> subparser
-      (   command "getblockcount"
+      (   command "getbestblockhash"
+          (info (pure GetBestBlockHash)
+                (progDesc "Get best block hash"))
+      <>  command "getblockcount"
           (info (pure GetBlockCount)
                 (progDesc "Get block count"))
+      <>  command "getblockchaininfo"
+          (info (pure GetBlockchainInfo)
+                (progDesc "Get blockchain info"))
       <>  command "getblockhash"
           (info getBlockHashP
                 (progDesc "Get block hash"))
